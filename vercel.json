@@ -1,11 +1,19 @@
 {
-  "regions": ["all"],
+  "regions": [
+    "all"
+  ],
   "functions": {
     "api/**": {
-      "memory": 3008
+      "memory": 1024
     }
   },
   "rewrites": [
-    { "source": "/(.+)", "destination": "/api" }
-  ]
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ],
+  "env": {
+    "OG_HTML_DEBUG": "0"
+  }
 }

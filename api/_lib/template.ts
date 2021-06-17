@@ -1,17 +1,16 @@
+// import { readFileSync } from 'fs';
+// import marked from 'marked';
+// import { sanitizeHtml } from './sanitizer';
+// import {ParsedRequest} from './types';
+// const twemoji = require('twemoji');
+// const twOptions = { folder: 'svg', ext: '.svg' };
+// const emojify = (text: string) => twemoji.parse(text, twOptions);
 
-import { readFileSync } from 'fs';
-import marked from 'marked';
-import { sanitizeHtml } from './sanitizer';
-import { ParsedRequest } from './types';
-const twemoji = require('twemoji');
-const twOptions = { folder: 'svg', ext: '.svg' };
-const emojify = (text: string) => twemoji.parse(text, twOptions);
+// const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
+// const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
+// const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
 
-const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
-const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
-const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
-
-function getCss(theme: string, fontSize: string) {
+/*function getCss(theme: string, fontSize: string) {
     let background = 'white';
     let foreground = 'black';
     let radial = 'lightgray';
@@ -93,7 +92,7 @@ function getCss(theme: string, fontSize: string) {
         margin: 0 .05em 0 .1em;
         vertical-align: -0.1em;
     }
-    
+
     .heading {
         font-family: 'Inter', sans-serif;
         font-size: ${sanitizeHtml(fontSize)};
@@ -101,9 +100,9 @@ function getCss(theme: string, fontSize: string) {
         color: ${foreground};
         line-height: 1.8;
     }`;
-}
+}*/
 
-export function getHtml(parsedReq: ParsedRequest) {
+/*export function getHtml(parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
     return `<!DOCTYPE html>
 <html>
@@ -129,9 +128,66 @@ export function getHtml(parsedReq: ParsedRequest) {
         </div>
     </body>
 </html>`;
+}*/
+export function getHtml(caseData: any) {
+    return `<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Кейс № ${caseData.id} — PRakula</title>
+    <meta name="color-scheme" content="light dark">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+          name="viewport">
+    <base href="https://prakula.ru">
+    <style>
+        :root {
+        /*background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="64" width="64"><text y="28" font-size="8">🦈</text></svg>');*/
+        /*background-size: 100px 100px;*/
+            font-family: Helvetica, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        body {
+            max-width: 1400px;
+            margin: unset;
+            height: fit-content;
+        }
+
+        a {
+            color: inherit;
+            text-transform: capitalize;
+        }
+
+        picture, img {
+            max-height: 100px;
+        }
+
+        .label {
+            opacity: .5
+        }
+    </style>
+</head>
+<body>
+<picture style="width: 50px;">
+    <source media="(prefers-color-scheme: dark)" srcset="/assets/img/logo.png">
+    <img src="/assets/img/logo.light.png">
+</picture>
+<h1>Кейс № ${caseData.id} <span class="label">(Аккаунт: ${caseData.user_id})</span></h1>
+<h2><span class="label">По запросу:</span> ${caseData.keyword}</h2>
+<h3>
+    Позиция в <span style="color: red">Я</span>ндекс: ${caseData.position} <span class="label" title="ID Региона: ${caseData.region_id}">(${caseData.region})</span>
+</h3>
+<h4>
+    <span class="label">Домен:</span> <a href="http://${caseData.domain}" target="_blank">${caseData.domain}</a>
+</h4>
+<h5><span class="label">Дата:</span> ${caseData.date}</h5>
+</body>
+</html>`;
 }
 
-function getImage(src: string, width ='auto', height = '225') {
+/*function getImage(src: string, width ='auto', height = '225') {
     return `<img
         class="logo"
         alt="Generated Image"
@@ -139,8 +195,8 @@ function getImage(src: string, width ='auto', height = '225') {
         width="${sanitizeHtml(width)}"
         height="${sanitizeHtml(height)}"
     />`
-}
+}*/
 
-function getPlusSign(i: number) {
+/*function getPlusSign(i: number) {
     return i === 0 ? '' : '<div class="plus">+</div>';
-}
+}*/
